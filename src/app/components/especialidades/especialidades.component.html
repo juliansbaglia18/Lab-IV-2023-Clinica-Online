@@ -1,0 +1,52 @@
+<div *ngIf="!loading && !updating;else loadingSpinner" class="especialidades-container">
+    <div class="especialidades-form-container">
+        <form>
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Especialidades</mat-label>
+                    <mat-select [(ngModel)] = "espSeleccionadas" name="espSeleccionadas" multiple (selectionChange)="onEspecialidadSeleccionada()">
+                        <mat-select-trigger>
+                            {{espSeleccionadas[0] ? espSeleccionadas[0].descripcion : ''}}
+                            <span *ngIf="espSeleccionadas.length > 1">
+                              (+{{(espSeleccionadas.length || 0) - 1}} {{espSeleccionadas.length === 2 ? 'other' : 'others'}})
+                            </span>
+                        </mat-select-trigger>     
+                        <mat-option *ngFor="let especialidad of especialidades" [value]="especialidad">
+                            {{especialidad.descripcion}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div *ngIf="permitirNuevasEspecialidades">
+                <div>O agrega tu especialidad:</div>
+                <div class="nueva-especialidad">            
+                    <div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Nueva Especialidad</mat-label>
+                            <input matInput type="text" name="nuevaEspecialidad" [(ngModel)] = "nuevaEspecialidad">
+                        </mat-form-field>
+                        <mat-error *ngIf="nuevaEspecialidadYaExiste">
+                            La especialidad ya existe
+                        </mat-error>
+                    </div>            
+                    <div>
+                        <button [disabled]="nuevaEspecialidad.length === 0 || nuevaEspecialidadYaExiste " mat-raised-button (click)="tryAgregarEspecialidad()" color="accent"><mat-icon>add</mat-icon></button>
+                    </div>
+                </div>
+            </div>  
+        </form>
+    </div>    
+    <div class="especialidades-chip-list-container">
+        <mat-chip-list>
+            <mat-chip *ngFor="let especialidad of espSeleccionadas" color="primary">
+                {{especialidad.descripcion}}
+            </mat-chip>
+        </mat-chip-list>
+    </div>
+</div>
+<ng-template #loadingSpinner>
+    <div class="spinner">
+        <mat-spinner color="accent"></mat-spinner>
+    </div>
+</ng-template>
+

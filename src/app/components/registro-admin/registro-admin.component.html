@@ -1,0 +1,83 @@
+<div class="register-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box box-wide">
+        <mat-card-header>
+            <mat-card-title>Registro Admin</mat-card-title>
+        </mat-card-header>
+        <form [formGroup]="registerForm" (ngSubmit)="handleRegister()" class="example-form" [hidden]=buffering>
+            <mat-card-content>
+                <div style="display:flex; flex-direction: row;justify-content: space-between;">
+                    <div style="max-width: 50%; padding: 15px;">
+
+                        <mat-form-field class="example-full-width" hideRequiredMarker>
+                            <input type="email" name="email" formControlName="email" matInput placeholder="Email"
+                                required>
+                            <mat-error *ngIf="emailAlreadyInUse">
+                                El email ya se encuentra en uso
+                            </mat-error>
+                            <mat-error *ngIf="invalidEmail">
+                                El email no es valido
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width" hideRequiredMarker>
+                            <input matInput type="text" name="dni" formControlName="dni" placeholder="D.N.I." required>
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width" hideRequiredMarker>
+                            <input matInput placeholder="Contraseña" [type]="hidePassword[0] ? 'password' : 'text'"
+                                name="Password" required formControlName="password" autocomplete="new-password">
+                            <mat-icon matSuffix (click)="togglePasswordVisibility(0)">{{hidePassword[0] ?
+                                'visibility_off' :
+                                'visibility'}}</mat-icon>
+                            <mat-hint>
+                                <mat-icon *ngIf="registerForm.controls['password'].hasError('pattern')"
+                                    matTooltip="
+                      Password must be at least 8 characters long, contain 1 uppercase letter, 1 lowercase letter and 1 special character (i.e. @!#$)." matTooltipPosition="below"
+                                    matTooltipShowDelay="100" matTooltipHideDelay="200">info
+                                </mat-icon>
+                            </mat-hint>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" hideRequiredMarker>
+                            <input matInput placeholder="Repetir Contraseña"
+                                [type]="hidePassword[1] ? 'password' : 'text'" formControlName="confirmPassword"
+                                name="confirmPassword" autocomplete="new-password">
+                            <mat-icon matSuffix (click)="togglePasswordVisibility(1)">{{hidePassword[1] ?
+                                'visibility_off' :
+                                'visibility'}}</mat-icon>
+                        </mat-form-field>
+                        <mat-error *ngIf="registerForm.errors && registerForm.controls['confirmPassword'].touched">
+                            Passwords do not match
+                        </mat-error>
+                    </div>
+                    <div style="max-width:50%; padding: 15px;">
+                        <mat-form-field class="example-full-width" hideRequiredMarker>
+                            <input matInput type="text" name="nombre" formControlName="nombre" placeholder="Nombre"
+                                required autocomplete="nombre">
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width" hideRequiredMarker>
+                            <input matInput type="text" name="apellido" formControlName="apellido"
+                                placeholder="Apellidos" required>
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width" hideRequiredMarker>
+                            <input matInput type="number" name="edad" formControlName="edad" placeholder="Edad"
+                                required>
+                        </mat-form-field>                        
+                    </div>                    
+                </div>
+                <div style="display:flex; flex-direction: row;">
+                    <app-subir-imagen style="margin: 5px;" (datosImagen)="getImage($event,0)" ></app-subir-imagen>
+                </div>
+                <mat-error style="text-align: center; margin-top:10px" *ngIf="!loadedImages">
+                    Debe cargar una imagen
+                </mat-error>
+            </mat-card-content>
+            <button [disabled]="!registerForm.valid" type="submit" mat-stroked-button
+                color="accent" class="btn-block">Registrarme</button>
+        </form>
+        <div *ngIf="buffering" class="spinner">
+            <mat-spinner color="accent"></mat-spinner>
+        </div>
+    </mat-card>
+</div>

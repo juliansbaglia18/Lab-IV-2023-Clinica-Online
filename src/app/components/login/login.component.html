@@ -1,0 +1,41 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box box-slim mt-5">
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+      <form [formGroup]="loginForm" (ngSubmit)="handleLogIn()">
+        <mat-card-content>
+          <div class="feature-container-login text-center">
+        
+            <button class="btn btn-block btn-primary m-1" >Crear ADMIN</button>
+            <button class="btn btn-block btn-warning m-1" (click)="loadMockUser('juliansbaglia@gmail.com', 'Password_123')">Ingresar como paciente</button>
+            <button class="btn btn-block btn-success m-1" (click)="loadMockUser('julysbaglia18@gmail.com', 'Password_123')">Ingresar como especialista</button>
+            <button class="btn btn-block btn-danger m-1" (click)="loadMockUser('keilajazmines@gmail.com', 'Password_123')">Ingresar como admin</button>
+          </div>
+          <mat-form-field class="example-full-width" hideRequiredMarker>
+            <input matInput type="email" name="email" formControlName="email"   placeholder="Email" autocomplete="email" required>
+            <mat-error
+            *ngIf="loginForm.controls['email'].hasError('required') && loginForm.controls['email'].touched">
+            Email is required
+            </mat-error>
+            <mat-error
+            *ngIf="loginForm.controls['email'].hasError('email') && loginForm.controls['email'].touched && !loginForm.controls['email'].hasError('required')">
+            Invalid email
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width" hideRequiredMarker>
+            <input matInput placeholder="Password" [type]="hidePassword ? 'password' : 'text'"  name="Password" formControlName="password"  autocomplete="current-password" required>
+            <mat-icon matSuffix (click)="togglePasswordVisibility()">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </mat-form-field>                  
+          <mat-error
+          *ngIf="this.invalidCredentials">
+            Invalid username or password
+          </mat-error>
+        </mat-card-content>        
+        <button [disabled]="!loginForm.valid" mat-stroked-button type="submit" color="accent" class="btn-block" >
+          Log in
+        </button>
+      </form>       
+    </mat-card>
+  </div>
+

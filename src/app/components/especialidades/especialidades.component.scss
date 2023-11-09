@@ -1,0 +1,28 @@
+.especialidades-container { 
+    display: flex; 
+    flex-direction: column; 
+    justify-content:center;
+    align-items:"center"
+}
+
+.especialidades-form-container{
+    text-align: center;
+}
+
+.especialidades-chip-list-container { 
+    text-align: center;
+}
+
+#mat-chip-list-0.mat-chip-list-wrapper {
+    justify-content: center;
+}
+
+div.nueva-especialidad{
+    margin-top: 15px;
+}
+
+.nueva-especialidad{
+    display:flex;
+    align-items:center;
+    justify-content: space-evenly;
+}

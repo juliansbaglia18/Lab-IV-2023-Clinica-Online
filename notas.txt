@@ -1,0 +1,127 @@
+ESTADOS
+
+PENDIENTE
+ACEPTADO
+RECHAZADO
+CANCELADO
+FINALIZADO
+
+PACIENTE:
+- CANCELAR
+- CANCELAR
+- MOSTRAR RAZON?
+- MOSTRAR RAZON?
+- COMPLETAR ENCUESTA
+
+Al cancelar hay que poner la razon. Esto quedara en comentario
+Si está rechadazo o cancelado quedará en comentarios
+Si está finalizado que haya un botón para llenar la encuesta
+
+profesional:
+- ACEPTAR / RECHAZAR 
+- MOSTRAR COMO ACEPTADO - CANCELAR O FINALIZAR
+- MOSTRAR COMO RECHAZADO Y LA RAZON
+- MOSTRAR COMO CANCELADO Y LA RAZON
+- VER HISTORIA CLINICA
+
+Al rechazar hay que poner la razon, al cancelar hay que poner la razon 
+al finalizar se debe llenar la reseña
+luego si está finalizado aparecerá la opcion para completar la encuesta.
+
+admins:
+podran ver los turnos de todos, y filtrar por especialista y especialidad
+- CANCELAR, DEBE DEJAR COMENTARIO
+- NADA
+- NADA
+- NADA 
+- VER HISTORIA CLINICA
+
+
+Solitar turno, solo pacientes y admins
+
+TO DO:
+done - seccion de horarios
+done - captcha en registro
+done - pedir turnos
+done - mostrar turnos
+done - acciones de los turnos
+done - agregar filtros a los turnos
+done - mostrar historia clinica en seccion Mi perfil para los pacientes
+done - seccion pacientes para los especialistas, solo pacientes a los que haya atendido alguna vez.
+done - agregar filtro para los campos del turno en listado de turnos
+done - seccion usuarios
+done - descarga de lista de usuarios
+done - hacer coleccion de ingresos al sistema
+done - ver de agregar algunas cosas a barra de navegacion
+done - informe de logs de entrada al sistema para cada usuario
+done - agregar filtro de fechas
+done - descargar en excel cada informe
+done - Cantidad de turnos por especialidad.
+done - Cantidad de turnos por día.
+done - Cantidad de turnos solicitado por médico en un lapso de tiempo.
+done - Cantidad de turnos finalizados por médico en un lapso de tiempo.
+done - habilitado guard
+done - componente not authorized
+done - directiva de highlight
+done - se puede filtrar historia clinica por profesional
+done - descarga de pdf de historia clinica
+done - se puede ver la reseña de la historia clinica
+done - animacion de transición
+done - readme
+
+Requerimientos adicionales:
+s2:
+not done - al sacar turno, mostrar los profesionales usando otro componente custom q los muestre con su imagen y nombre arriba, habría que ver cómo manejar los filtros. TIenen que ser botones redondos.
+semi done - imagen de especialidades. habría que dejar q carguen una imagen.
+done - botones de los días con el label año/mes/dia y rectangulares
+s3:
+al igual q en el paso anterior, mostrar mis pacientes en botones redondos en la seccion pacientes, en vez de un listado
+poder ver la reseña del turno desde la historia clinica
+
+
+TO DO OBLIGATORIO:
+implementar lazy load
+
+TO DO AHORA:
+Agregados sprint 2:
+cuando voy a sacar el turno, voy a mostrar primero los profesionales con su imagen y el nombre arriba. botones redondos. Le hago click y me muestra sus especialidades en botones cuadrados. cada especialidad debe mostrar una imagen. La especialidad debe tener una imagen por defecto en caso de que no se haya cargado.
+Una vez q elija la especialidad muestra los días en botones rectangulares, el label va a ser año/mes/dia. No hace falta que muestre el nombre del día. 
+
+Agregados sprint 3:
+"
+Sección Pacientes,	"Para los especialistas. Solo deberá mostrar los usuarios que el
+especialista haya atendido al menos 1 vez."	Mostrar los usuarios con un favbutton redondo , imagen y nombre, al seleccionar un paciente  se muestra los dellaes de los turnos y un acceso a la reseña  de cada consulta
+Sección usuarios	"Solamente para el perfil Administrador, un excel con los datos de los
+usuarios."	
+"
+
+minimo 2 animaciones que deben ser desde arriba, transición.
+en la seccion de paciente
+para los especialistas vamos a mostrar solamente los pacientes q se atendieron con el
+se deben mostrar los usuarios en botones circulares y al clickearlo mostrará una reseña de ese paciente con la lista de turnos. debe mostrar  el nombre al lado del boton
+para los admins la seccion de usuarios va a mostrar los pacientes igual q epspecialistas
+para el paciente: en su perfil podrà descargar un pdf con su historial clinico
+
+
+
+TO DO AGORA:
+
+
+TO DO SI QUEDA TIEMPO:
+(informes): agregar fechas que faltan con valores en 0.
+tal vez poder modificar las encuestas/reseñas de los turnos.
+En Mi perfil, para los usuarios paciente, un pdf con la historia clínica. El PDF tiene que tener logo de la clínica, título del informe y fecha de emisión.
+una animacion de fading.
+
+
+
+
+
+
+
+
+
+
+
+
+

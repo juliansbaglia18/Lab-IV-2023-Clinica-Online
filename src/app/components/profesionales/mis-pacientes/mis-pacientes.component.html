@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="row" *ngIf="!loading;else loadingSpinner">
+        <div class="col-6 p-3">
+            <div class="border border-primary rounded-1">
+                <!-- <app-seleccionar-paciente *ngIf="pacientes" [pacientes]="pacientes" (pacienteSeleccionadoEvent)="setPacienteSeleccionado($event)"> -->
+                <!-- </app-seleccionar-paciente> -->
+            </div>
+        </div>
+        <div class="col-6 p-3">
+            <div class="border border-primary rounded-1" *ngIf="pacienteSeleccionado !== undefined">
+                <div class="row pt-2">
+                    <app-usuario-detalle [usuario]="pacienteSeleccionado">
+            
+                    </app-usuario-detalle>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center h4 mt-3">Historia Clinica</div>
+                    <div class="col-11 pb-2" style="overflow-y:scroll; height:550px">
+                      <!-- <app-historia-clinica-listado [user]="pacienteSeleccionado" [profesional]="profesional!"></app-historia-clinica-listado> -->
+                    </div>
+                  </div>
+            </div>
+        </div>        
+    </div>
+</div>
+
+<ng-template #loadingSpinner>
+    <div class="row mt-5">
+        <div class="spinner">
+            <mat-spinner color="accent"></mat-spinner>
+        </div>
+    </div>    
+</ng-template>
+

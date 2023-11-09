@@ -1,0 +1,49 @@
+<div class="mat-elevation-z8 listado">
+    <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="nombre">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Nombre</strong> </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.nombre}}</mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="apellido">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Apellido</strong> </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.apellido}}</mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="edad">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Edad</strong> </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.edad}}</mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="dni">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> <strong>D.N.I.</strong> </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.dni}}</mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Email</strong> </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="obraSocial">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Obra Social</strong> </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.obraSocial}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="imagen">
+        <mat-header-cell *matHeaderCellDef><strong>Imagen</strong></mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            <div>
+            <img class="table rounded-circle" [src]="element.imagenes[0]">
+            </div>
+        </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row (click)="onPacienteSeleccionado(row)" *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
+</div>
+
+

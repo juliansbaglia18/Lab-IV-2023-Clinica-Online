@@ -1,0 +1,14 @@
+<mat-card class="card-file-preview" style="width:fit-content">                
+    <mat-card-content>
+        <img style="margin-bottom:10px" mat-card-lg-image [src]="imgURL ? imgURL : '../../../assets/imagenes/dummy-user.png'" SameSite="Strict">
+        <form [formGroup]="archivoForm">
+            <div>
+                <input type="file" [id]="randomId" accept="image/jpeg/png" class="custom-file-input" #file style="display : none;" formControlName="archivo" (change)="cambioArchivo($event)">
+                <input type="button" value="Elegir Imagen" (click)="pressFileBtn()"/>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
+
+  
+  

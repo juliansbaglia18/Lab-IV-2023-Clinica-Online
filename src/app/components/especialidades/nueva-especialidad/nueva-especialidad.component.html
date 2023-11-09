@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-6 d-flex align-items-center mt-2 offset-2">
+            <mat-form-field appearance="outline" class="w-100 h-100">
+                <mat-label>Nueva Especialidad</mat-label>
+                <input matInput type="text" name="nuevaEspecialidad" [(ngModel)] = "nuevaEspecialidad">
+            </mat-form-field>
+            <mat-error *ngIf="yaExiste">
+                La especialidad ya existe
+            </mat-error>
+        </div>
+        <div class="col-3 d-flex align-items-center">
+                <button [disabled]="nuevaEspecialidad.length === 0 || yaExiste " mat-raised-button (click)="tryAgregarEspecialidad()" color="accent" class="w-100 h-100"><mat-icon>add</mat-icon></button>
+        </div>    
+    </div>
+    <div class="row p-2 justify-content-center">
+        <div class="col-3">
+            <app-subir-imagen (datosImagen)="getImage($event)"></app-subir-imagen>
+        </div>        
+    </div>
+</div>
+

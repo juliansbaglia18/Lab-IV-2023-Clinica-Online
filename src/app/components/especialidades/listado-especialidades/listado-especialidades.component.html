@@ -1,0 +1,15 @@
+<div class="row my-3">
+    <div class="col-6 offset-3 h2 text-center">
+        ESPECIALIDADES
+    </div>
+</div>
+<div class="row mb-5">
+    <div class="col-6 offset-3">
+        <button mat-flat-button color="accent" class="w-100" (click)="routeToNuevaEsp()">AGREGAR NUEVA</button>
+    </div>
+</div>
+<div class="row" *ngIf="especialidades.length > 0">
+    <div class="col-11 offset-1">
+        <!-- <app-seleccionar-especialidad [especialidades]="especialidades" [columns]="3" [rowHeight]="'2:1'" (especialidadSeleccionadaEvent)="onEspecialidadSeleccionada($event)"></app-seleccionar-especialidad> -->
+    </div>
+</div>

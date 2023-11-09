@@ -1,0 +1,24 @@
+<div class="container-fluid mt-1" *ngIf="user">
+  <div class="row mt-3">
+    <div class="col-3 offset-1">
+      <div class="media d-flex flex-column justify-content-center">
+        <img class="align-self-start img-thumbnail rounded-circle w-50" src="{{(user.imagenes[0]) ?? '/assets/images/dummy-user.png'}}"
+          alt="{{user.nombre}}">
+        <div class="media-body pl-5">
+          <h1>Hola: <strong>{{user.nombre}} {{user.apellido}}</strong></h1>
+          <p>Email: <strong>{{user.email}}</strong></p>
+          <p>Edad: <strong>{{user.edad}}</strong></p>
+          <p>DNI: <strong>{{user.dni}}</strong></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-8" *ngIf="user.typename.toLowerCase() == 'paciente'">
+      <div class="row">
+        <div class="col-11 offset-1 h1">Historia Clinica</div>
+      </div>
+      <div style="overflow-y:scroll; height:550px">
+        <!-- <app-historia-clinica-listado [user]="user"></app-historia-clinica-listado> -->
+      </div>
+    </div>
+</div>
+<!-- { "temperatura": 36, "pesoKG": 56, "datosAdicionales": { "general": "consulta general" }, "alturaCM": 150, "presion": "12/8" } -->

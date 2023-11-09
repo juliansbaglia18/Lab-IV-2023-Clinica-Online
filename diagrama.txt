@@ -1,0 +1,30 @@
+
+profesional:
+especialidades[];
+autorizado : boolean;
+horariosDisponibles = diaProfesional[];
+turnos : turno[];
+
+diaProfesional : 
+diaDeLaSemana : number;
+atiende : boolean = false;
+desde : HoraMinuto | undefined;
+hasta : HoraMinuto | undefined;
+duracionDeTurnos : number  | undefined;
+
+HoraMinuto : 
+horas : number;
+minutos : number;
+
+turno:
+id profesional
+id paciente
+horario
+
+horario:
+fecha : Date;
+inicio : HoraMinuto;
+finalizacion : HoraMinuto;
+
+paciente:
+turnos : turno[]

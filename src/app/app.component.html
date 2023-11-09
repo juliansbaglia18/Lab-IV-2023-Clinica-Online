@@ -1,0 +1,51 @@
+<mat-toolbar *ngIf="!auth.isLoggedIn; else loggedInNavBar" color="primary" class="app-header">
+  <div>
+    <a routerLink="home" routerLinkActive="router-link-active" class="home">Inicio</a>
+  </div>
+  <div class="nav-tool-items">
+    <a mat-button mat-raised-button color="warn" routerLink="login" routerLinkActive="active" class="nav-bar-items mr-2">Ingreso</a>
+    <a mat-button mat-raised-button color="primary" routerLink="register" routerLinkActive="active" class="nav-bar-items mr-2">Registrarse</a>
+  </div>
+</mat-toolbar>
+
+
+<ng-template #loggedInNavBar>
+  <mat-toolbar color="Secondary" class="app-header">
+    <div>
+      <a routerLink="home" routerLinkActive="router-link-active"  class="home">Inicio</a>
+    </div>
+    <div class="nav-tool-items">
+      <a *ngIf="auth.isAdmin || auth.isPaciente" mat-button mat-raised-button color="primary" routerLink="nuevo-turno" routerLinkActive="active" class="nav-bar-items btn mr-2">
+        Sacar Turno
+      </a>
+      <a mat-button mat-raised-button color="primary" routerLink="mis-turnos" routerLinkActive="active" class="nav-bar-items mr-2">
+        Mis Turnos
+      </a>
+      <a *ngIf="auth.isProfesional" mat-button mat-raised-button color="primary" routerLink="mis-pacientes" routerLinkActive="active" class="nav-bar-items mr-2">
+        Mis Pacientes
+      </a>
+      <a *ngIf="auth.isAdmin" mat-button mat-raised-button color="primary" routerLink="usuarios" routerLinkActive="active" class="nav-bar-items mr-2">
+        Usuarios
+      </a>
+      <a *ngIf="auth.isProfesional" mat-button mat-raised-button color="primary" routerLink="alta-horarios" routerLinkActive="active" class="nav-bar-items mr-2">
+        Horarios
+      </a>
+        <mat-menu #appMenu="matMenu" xPosition="before" yPosition="below">
+          <button mat-menu-item routerLink="mi-perfil" routerLinkActive="active">Mi Perfil</button>
+          <button mat-menu-item (click)="handleLogOut()"><strong>
+            Log Out
+
+          </strong>
+          </button>
+        </mat-menu>
+        <button mat-raised-button [matMenuTriggerFor]="appMenu" class="nav-bar-items">
+          {{auth.userData ? auth.userData.displayName : 'User'}}
+        </button>
+    </div>
+  </mat-toolbar>
+</ng-template>
+<div [@routeAnimations]="getRouteAnimationData()">
+    <router-outlet></router-outlet>
+</div>
+
+

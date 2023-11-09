@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <h1 mat-dialog-title class="text-center"> Encuesta de satisfaccion</h1>
+    <div mat-dialog-content class>
+        <div class="row mb-3">
+            <div class="col-5 d-flex align-items-center">
+                Atencion de la Clinica: 
+            </div>
+            <div class="col-5">
+                <star-rating [starType]="'svg'" [rating]="3" [labelText]="ratings[encuesta.puntuacionClinica - 1]" labelPosition="top" id="sr-1" (ratingChange)="onRatingChangeClinica($event)"></star-rating>
+            </div>            
+        </div>
+        <div class="row mb-3">
+            <div class="col-5 d-flex align-items-center">
+                Puntualidad del turno: 
+            </div>
+            <div class="col-5">
+                <star-rating [starType]="'svg'" [rating]="3" [labelText]="ratings[encuesta.puntualidadTurno - 1]" labelPosition="top" id="sr-2" (ratingChange)="onRatingChangeTurno($event)"></star-rating>
+            </div>            
+        </div>
+        <div class="row mb-3">
+            <div class="col-5 d-flex align-items-center">
+                Calificacion del especialista: 
+            </div>
+            <div class="col-5">
+                <star-rating [starType]="'svg'" [rating]="3" [labelText]="ratings[encuesta.puntuacionEspecialista - 1]" labelPosition="top" id="sr-3" (ratingChange)="onRatingChangeEspecialista($event)"></star-rating>
+            </div>            
+        </div>
+        <div class="row">
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label class="w-100">Comentarios adicionales</mat-label>
+                <textarea rows="6" cols="80" class="w-100" matInput [(ngModel)]="encuesta.comentario"></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions class="justify-content-around">
+        <button mat-flat-button color="warn" (click)="onNoClick()">Volver</button>
+        <button mat-flat-button color="primary" (click)="submitDialog()" cdkFocusInitial>Enviar</button>
+    </div>
+</div>

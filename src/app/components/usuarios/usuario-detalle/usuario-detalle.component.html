@@ -1,0 +1,34 @@
+<div class="detalle">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>{{usuario.nombre + " " + usuario.apellido}}</mat-card-title>
+            <mat-card-subtitle>{{usuario.typename}}</mat-card-subtitle>
+        </mat-card-header>        
+        <img class="rounded-1" mat-card-md-image [src]="usuario.imagenes[0]">
+        <mat-card-content class="mt-4">
+            <div *ngIf="usuario.typename=='Profesional'" class="detalle-row">
+                <strong>Habilitado: </strong>{{usuario.habilitado | boolES}}
+            </div>
+            <div class="detalle-row">
+                <strong>Email: </strong>{{usuario.email}}
+            </div>
+            <div class="detalle-row">
+                <strong>Edad: </strong>{{usuario.edad}}
+            </div>
+            <div class="detalle-row">
+                <strong>DNI: </strong>{{usuario.dni}}
+            </div>
+            <div *ngIf="usuario.typename.toLowerCase() =='paciente'" class="detalle-row">
+                <strong>Obra Social: </strong>{{usuario.obraSocial}}
+            </div>                                
+        </mat-card-content>
+        <div *ngIf="auth.isAdmin">
+            <button class="w-100" *ngIf="usuario.typename=='Profesional'" mat-flat-button (click)="toggleHabilitarUsuario()" [color]="usuario.habilitado ? 'warn' : 'primary'">{{usuario.habilitado ? 'Deshabilitar' : 'Habilitar'}}</button>
+            <mat-card-actions align="end">
+                <button mat-stroked-button (click)="modificarUsuario()" color="primary">Modificar<mat-icon>update</mat-icon></button>
+                <button mat-stroked-button (click)="eliminarUsuario()" color="warn">Eliminar<mat-icon>delete</mat-icon></button>
+            </mat-card-actions>
+        </div>        
+    </mat-card>
+</div>
+

@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "clinica-online-ed9da"
+  },
+  "targets": {
+    "clinica-online-ed9da": {
+      "hosting": {
+        "ClinicaOnline": [
+          "clinica-online-ed9da"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
+
+

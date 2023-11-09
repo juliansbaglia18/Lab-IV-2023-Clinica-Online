@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-12 p-4 border border-primary rounded-2">
+            <div class="row">
+                <div class="h2 text-danger text-center">
+                    No está autorizado para realizar operaciones
+                </div>
+            </div>
+            <div class="row">
+                <div class="h5 text-center">
+                    Por favor revise su correo para verificarse
+                </div>
+            </div>
+            <div *ngIf="!this.correoEnviado" class="row">
+                <div class="text-center">
+                    <button type="button" class="btn btn-link" (click)="reenviarCorreoVerificacion()">Reenviar correo de verificacion</button>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
